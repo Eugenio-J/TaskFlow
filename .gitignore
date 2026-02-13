@@ -4,7 +4,41 @@
 
 /backend/TaskFlow.API/appsettings.json
 
+# ===================
 # Visual Studio
+# ===================
 .vs/
-*.vs/
 **/.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ===================
+# .NET Build
+# ===================
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+
+# ===================
+# User Secrets
+# ===================
+appsettings.Development.json
+appsettings.Local.json
+
+# ===================
+# Node / React
+# ===================
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# ===================
+# OS Files
+# ===================
+.DS_Store
+Thumbs.db
