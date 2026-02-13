@@ -3,3 +3,8 @@
 ################################################################################
 
 /backend/TaskFlow.API/appsettings.json
+
+# Visual Studio
+.vs/
+*.vs/
+**/.vs/
