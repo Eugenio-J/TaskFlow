@@ -1,0 +1,34 @@
+import { renderHook, act } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { useDebounce } from './useDebounce';
+
+describe('useDebounce', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it('returns initial value immediately', () => {
+    const { result } = renderHook(() => useDebounce('test', 500));
+    expect(result.current).toBe('test');
+  });
+
+  it('returns debounced value after delay', () => {
+    const { result, rerender } = renderHook(
+      ({ value }) => useDebounce(value, 500),
+      { initialProps: { value: 'initial' } }
+    );
+
+    rerender({ value: 'updated' });
+    expect(result.current).toBe('initial');
+
+    act(() => {
+      vi.advanceTimersByTime(500);
+    });
+
+    expect(result.current).toBe('updated');
+  });
+});
